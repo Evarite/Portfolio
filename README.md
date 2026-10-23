@@ -31,3 +31,4 @@ The website is already programmed to detect and highlight these preview slots.
 - Pure Semantic HTML5 & SEO Meta Tags
 - Bespoke Vanilla CSS (Dark theme, glassmorphism, responsive grid, no heavy frameworks)
 - Interactive JavaScript (Particle canvas, C# syntax highlighter, roguelite simulator widget, media switcher)
+
