@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alaksiej | Unity Gameplay Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Alaksiej, a Unity Gameplay Programmer specializing in clean C# architecture, SOLID principles, VContainer dependency injection, and responsive gameplay systems.">
+  <meta name="keywords" content="Unity Developer, Gameplay Programmer, C# Developer, Game Development, VContainer, ScriptableObjects, BSUIR">
+  <meta name="author" content="Alaksiej">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alaksiej | Unity Gameplay Developer Portfolio">
+  <meta property="og:description" content="Explore games, clean C# architectures, ScriptableObject spawning systems, and GameJam projects.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Interactive Ambient Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Ambient Light Accents -->
+  <div class="ambient-glow glow-top-right"></div>
+  <div class="ambient-glow glow-mid-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand">
+        <span class="nav-logo-glyph">&lt;A/&gt;</span>
+        <span>Alaksiej</span>
+        <span class="nav-role-badge">Gameplay Dev</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#architecture" class="nav-link">Code & Architecture</a></li>
+          <li><a href="#principles" class="nav-link">Engineering Standards</a></li>
+          <li><a href="#simulator" class="nav-link">Interactive Demo</a></li>
+          <li><a href="#about" class="nav-link">About & Skills</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-text-col">
+          <div class="hero-status-pill">
+            <span class="status-dot"></span>
+            <span>Open for Junior / Gameplay Developer Roles</span>
+          </div>
+
+          <h1 class="hero-title">
+            Crafting Responsive, Alive Game Worlds With <span class="gradient-text">Clean C# Architecture</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Hi, I’m <strong>Alaksiej</strong>. 19-year-old 3rd-year Game Design student at BSUIR and passionate <strong>Unity Gameplay Developer</strong>. I build performant gameplay systems with <strong>SOLID principles</strong>, <strong>VContainer dependency injection</strong>, ScriptableObject architectures, and zero monolithic singletons.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <span>View Projects</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#architecture" class="btn btn-secondary">
+              <span>Inspect C# Architecture</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </a>
+          </div>
+
+          <!-- Quick Recruiter Stats -->
+          <div class="hero-stats-row">
+            <div class="stat-item">
+              <span class="stat-value gold">2nd Place</span>
+              <span class="stat-label">GameJam Finish</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value cyan">6+</span>
+              <span class="stat-label">Unity Projects</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value emerald">0</span>
+              <span class="stat-label">Monolithic Singletons</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">5</span>
+              <span class="stat-label">Languages Spoken</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Avatar Card -->
+        <div class="hero-card-wrapper">
+          <div class="hero-avatar-card">
+            <div class="avatar-image-container">
+              <img src="assets/images/avatar.jpg" alt="Alaksiej - Unity Gameplay Developer" class="avatar-image">
+              <div class="avatar-overlay-badge">
+                <div>
+                  <div class="overlay-name">Alaksiej</div>
+                  <div class="overlay-sub">BSUIR Game Design • Year 3</div>
+                </div>
+                <div class="overlay-flag" title="Belarus">🇧🇾</div>
+              </div>
+            </div>
+
+            <div class="hero-card-tags">
+              <span class="tag-pill">Unity 2022 / 2023</span>
+              <span class="tag-pill">C# .NET</span>
+              <span class="tag-pill">VContainer DI</span>
+              <span class="tag-pill">New Input System</span>
+              <span class="tag-pill">Blender 3D</span>
+              <span class="tag-pill">SOLID / Clean Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Portfolio Showcase</span>
+          <h2 class="section-title">Selected Games & Systems</h2>
+          <p class="section-desc">
+            From 72-hour GameJam competition games to high-performance university labs and architecture prototypes. Each project demonstrates modular design, zero spaghetti, and deep engine knowledge.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs-wrapper">
+          <div class="filter-tabs" id="project-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="jam">Game Jam & Highlight</button>
+            <button class="filter-btn" data-filter="architecture">Architecture & DI</button>
+            <button class="filter-btn" data-filter="labs">University Labs (2DV)</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- PROJECT 1: SUNFLOWER (SAULESPUKE HELIANTHUS) - FEATURED -->
+          <article class="project-card featured" data-category="jam architecture">
+            <div class="project-media-frame">
+              <img src="assets/projects/sunflower/desert_bg_2.jpg" 
+                   alt="Saulespuke Helianthus Gameplay Preview" 
+                   class="project-img" 
+                   id="sunflower-media-target">
+              
+              <div class="media-overlay-top">
+                <span class="project-badge-pill badge-gold">
+                  🏆 2nd Place Game Jam Winner
+                </span>
+                
+                <div class="media-switch-tabs" data-target="sunflower-media-target">
+                  <button class="media-tab-btn active" data-src="assets/projects/sunflower/desert_bg_2.jpg">Combat</button>
+                  <button class="media-tab-btn" data-src="assets/projects/sunflower/desert_bg_4.jpg">Solar</button>
+                  <button class="media-tab-btn" data-src="assets/projects/sunflower/desert_bg_3.jpg">Ascent</button>
+                  <button class="media-tab-btn" data-src="assets/projects/sunflower/MenuBG.png">Title</button>
+                </div>
+              </div>
+
+              <div class="gif-placeholder-bar">
+                <span class="gif-icon">PREVIEW</span>
+                <span>Gameplay GIF slot ready: drop <code>assets/gifs/sunflower_gameplay.gif</code></span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div>
+                <div class="project-header-row">
+                  <h3 class="project-title">Saulespuke Helianthus</h3>
+                  <span class="project-badge-pill badge-gold">Team Lead</span>
+                </div>
+                <div class="project-tagline">3-Day Game Jam • Incremental Roguelite Strategy</div>
+                <p class="project-description">
+                  Developed in 72 hours as <strong>Team Lead and Main Programmer</strong>. An incremental strategy roguelite where a resilient sunflower grows toward the sky while managing three vital resources: Water, Sun, and Minerals. If any drops to zero, an emergency lose timer triggers. Players purchase modular upgrades (Turrets, Solar generators, Capacity extensions), defend against flies and bumblebees, and spend evolution points on a branching skill tree after resetting.
+                </p>
+
+                <div class="architecture-callout-box">
+                  <div class="arch-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Key Architecture & Engineering
+                  </div>
+                  <div class="arch-desc">
+                    Engineered custom <code>WeightedRandomList&lt;T&gt;</code> for randomized module slot drops; implemented squared-distance enemy targeting (<code>sqrMagnitude</code>) to eliminate costly square roots; built complete JSON persistence save system for unlocked skills and wealth.
+                  </div>
+                </div>
+
+                <div class="project-tech-stack">
+                  <span class="tech-badge highlight">C# / Unity</span>
+                  <span class="tech-badge highlight">WeightedRandomList&lt;T&gt;</span>
+                  <span class="tech-badge">Roguelite Reset Formula</span>
+                  <span class="tech-badge">Turret AI / Coroutines</span>
+                  <span class="tech-badge">JSON Save System</span>
+                  <span class="tech-badge">Kanban & Code Agreement</span>
+                </div>
+              </div>
+
+              <div class="project-actions-row">
+                <button class="project-link-btn" onclick="openCodeSnippet('weighted-random')">
+                  <span>Inspect WeightedRandomList Code</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/sunflower/desert_bg_2.jpg', 'Saulespuke Helianthus - Turret Defense & Bee Waves')">
+                  Enlarge
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: 2DV_5 (INFINITE RUNNER & MODULAR SPAWNER) -->
+          <article class="project-card" data-category="labs architecture">
+            <div class="project-media-frame">
+              <img src="assets/projects/2dv/jetpack_runner.jpg" 
+                   alt="2DV_5 Infinite Runner and Laser Spawner" 
+                   class="project-img" 
+                   id="runner-media-target">
+
+              <div class="media-overlay-top">
+                <span class="project-badge-pill badge-cyan">
+                  ⚡ Polymorphic Spawner
+                </span>
+                <div class="media-switch-tabs" data-target="runner-media-target">
+                  <button class="media-tab-btn active" data-src="assets/projects/2dv/jetpack_runner.jpg">Concept</button>
+                </div>
+              </div>
+
+              <div class="gif-placeholder-bar">
+                <span class="gif-icon">PREVIEW</span>
+                <span>GIF Slot: <code>assets/gifs/2dv5_runner.gif</code></span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div>
+                <div class="project-header-row">
+                  <h3 class="project-title">2DV_5: Infinite Jetpack Runner</h3>
+                  <span class="project-badge-pill badge-cyan">VContainer DI</span>
+                </div>
+                <div class="project-tagline">Advanced ScriptableObject Spawning Architecture</div>
+                <p class="project-description">
+                  A high-speed infinite runner where the player navigates obstacles with responsive jetpack thrust controls, dodges randomized lasers, and collects coins. Built around an enterprise-grade <strong>polymorphic ScriptableObject spawning architecture</strong> that completely decouples spawn logic from scene management.
+                </p>
+
+                <div class="architecture-callout-box">
+                  <div class="arch-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Architecture: Generic Template Method Spawner
+                  </div>
+                  <div class="arch-desc">
+                    <code>SpawnService&lt;TSpawnData&gt; : AbstractSpawnService</code> allows creating specialized spawners (like <code>LaserSpawnService</code> with angle & scale variance) as ScriptableObjects. Injected via pure VContainer without singletons.
+                  </div>
+                </div>
+
+                <div class="project-tech-stack">
+                  <span class="tech-badge highlight">ScriptableObject Services</span>
+                  <span class="tech-badge highlight">VContainer DI</span>
+                  <span class="tech-badge">Generic Base Classes</span>
+                  <span class="tech-badge">Entity Recycling Bounds</span>
+                  <span class="tech-badge">DOTween Animation</span>
+                </div>
+              </div>
+
+              <div class="project-actions-row">
+                <button class="project-link-btn" onclick="openCodeSnippet('spawn-service')">
+                  <span>View SpawnService Architecture</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/2dv/jetpack_runner.jpg', '2DV_5 Infinite Runner - Obstacle and Coin Spawning')">
+                  Enlarge
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: 2DV_4 (STEAMPUNK AIRSHIP COMBAT) -->
+          <article class="project-card" data-category="labs architecture">
+            <div class="project-media-frame">
+              <img src="assets/projects/2dv/floating_islands_seamless_pixel_art (1).png" 
+                   alt="2DV_4 Steampunk Airship Combat" 
+                   class="project-img" 
+                   id="airship-media-target">
+
+              <div class="media-overlay-top">
+                <span class="project-badge-pill badge-purple">
+                  🛸 Steampunk Airships
+                </span>
+                <div class="media-switch-tabs" data-target="airship-media-target">
+                  <button class="media-tab-btn active" data-src="assets/projects/2dv/floating_islands_seamless_pixel_art (1).png">Islands</button>
+                  <button class="media-tab-btn" data-src="assets/projects/2dv/Player.png">Player</button>
+                  <button class="media-tab-btn" data-src="assets/projects/2dv/Enemy.png">Zeppelin</button>
+                </div>
+              </div>
+
+              <div class="gif-placeholder-bar">
+                <span class="gif-icon">PREVIEW</span>
+                <span>GIF Slot: <code>assets/gifs/2dv4_airship.gif</code></span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div>
+                <div class="project-header-row">
+                  <h3 class="project-title">2DV_4: Aerial Airship Combat</h3>
+                  <span class="project-badge-pill badge-purple">Object Pooling</span>
+                </div>
+                <div class="project-tagline">2D Wave Combat with VContainer Object Pooling Engine</div>
+                <p class="project-description">
+                  Fast-paced aerial combat game where player pilots a rocket-boosted pirate airship against waves of enemy zeppelins above floating islands. Features full integration with Unity's <strong>New Input System</strong>, smooth camera boundaries, enemy floating health bars, and zero-allocation object pooling.
+                </p>
+
+                <div class="architecture-callout-box">
+                  <div class="arch-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Architecture: Resolver-Integrated PoolService
+                  </div>
+                  <div class="arch-desc">
+                    <code>PoolService</code> integrates with VContainer's <code>IObjectResolver</code>, automatically injecting dependencies into freshly instantiated pool entities and organizing pooled transforms under dedicated hierarchy nodes.
+                  </div>
+                </div>
+
+                <div class="project-tech-stack">
+                  <span class="tech-badge highlight">PoolService & Resolver</span>
+                  <span class="tech-badge highlight">New Input System</span>
+                  <span class="tech-badge">IHittable Interface</span>
+                  <span class="tech-badge">Dynamic Transform Parenting</span>
+                  <span class="tech-badge">Screen Border Clamping</span>
+                </div>
+              </div>
+
+              <div class="project-actions-row">
+                <button class="project-link-btn" onclick="openCodeSnippet('pool-service')">
+                  <span>View PoolService Code</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/2dv/floating_islands_seamless_pixel_art (1).png', '2DV_4 - Aerial Airship Combat World')">
+                  Enlarge
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 4: 2DV_3 (CARD MEMORY & TURN STATE MACHINE) -->
+          <article class="project-card" data-category="labs">
+            <div class="project-media-frame">
+              <img src="assets/projects/cards/01_fox.png" 
+                   alt="2DV_3 Memory Cards Game" 
+                   class="project-img" 
+                   id="cards-media-target" 
+                   style="max-height: 220px; object-fit: contain;">
+
+              <div class="media-overlay-top">
+                <span class="project-badge-pill badge-emerald">
+                  🃏 State Management
+                </span>
+                <div class="media-switch-tabs" data-target="cards-media-target">
+                  <button class="media-tab-btn active" data-src="assets/projects/cards/01_fox.png">Fox</button>
+                  <button class="media-tab-btn" data-src="assets/projects/cards/02_owl.png">Owl</button>
+                  <button class="media-tab-btn" data-src="assets/projects/cards/03_rabbit.png">Rabbit</button>
+                </div>
+              </div>
+
+              <div class="gif-placeholder-bar">
+                <span class="gif-icon">PREVIEW</span>
+                <span>GIF Slot: <code>assets/gifs/2dv3_cards.gif</code></span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div>
+                <div class="project-header-row">
+                  <h3 class="project-title">2DV_3: Memory Match Engine</h3>
+                  <span class="project-badge-pill badge-emerald">VContainer</span>
+                </div>
+                <div class="project-tagline">Card Pairing, Turn State & Score Management</div>
+                <p class="project-description">
+                  A polished memory matching card game engineered with a clean separation of concerns: <code>CardInteraction</code> handles raycasting, <code>UsedPairs</code> and <code>CurrentMove</code> track game state, and <code>GameResultsManager</code> calculates match winners with smooth UI feedback.
+                </p>
+
+                <div class="architecture-callout-box">
+                  <div class="arch-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Clean Decoupling
+                  </div>
+                  <div class="arch-desc">
+                    Card state machines decouple input from animation and game logic. Fully wired via VContainer <code>GameScope</code>.
+                  </div>
+                </div>
+
+                <div class="project-tech-stack">
+                  <span class="tech-badge">State Machine</span>
+                  <span class="tech-badge">VContainer DI</span>
+                  <span class="tech-badge">Card Pair Logic</span>
+                  <span class="tech-badge">Sprite Randomizer</span>
+                </div>
+              </div>
+
+              <div class="project-actions-row">
+                <a href="#architecture" class="project-link-btn">
+                  <span>Explore Architecture</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 5: RELENTLESS SHOOTER (SYSTEMS SHOWCASE) -->
+          <article class="project-card" data-category="architecture">
+            <div class="project-media-frame">
+              <img src="assets/projects/2dv/relentless_arena.jpg" 
+                   alt="Relentless Shooter Arena Combat" 
+                   class="project-img" 
+                   id="relentless-media-target">
+
+              <div class="media-overlay-top">
+                <span class="project-badge-pill badge-cyan">
+                  ⚔️ Top-Down Survival
+                </span>
+              </div>
+
+              <div class="gif-placeholder-bar">
+                <span class="gif-icon">PREVIEW</span>
+                <span>GIF Slot: <code>assets/gifs/relentless_combat.gif</code></span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div>
+                <div class="project-header-row">
+                  <h3 class="project-title">Relentless Shooter</h3>
+                  <span class="project-badge-pill badge-cyan">WIP Refactor</span>
+                </div>
+                <div class="project-tagline">Inventory Drag & Drop, Wave Scaling & Loot Tables</div>
+                <p class="project-description">
+                  A top-down action survival prototype featuring differentiated melee weapon mechanics (sword and axe sweeps), timed wave scaling with progressive enemy buffs, and an interactive inventory drag-and-drop system.
+                </p>
+
+                <div class="architecture-callout-box">
+                  <div class="arch-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Architectural Note
+                  </div>
+                  <div class="arch-desc">
+                    Featured specifically to demonstrate the modular inventory UI drag handlers, weighted item drops, and decoupled health interfaces (<code>IHittable</code>, <code>IDeathHandler</code>). Legacy singletons are being actively replaced with pure DI.
+                  </div>
+                </div>
+
+                <div class="project-tech-stack">
+                  <span class="tech-badge">UI Drag & Drop Handlers</span>
+                  <span class="tech-badge">Weighted Loot Tables</span>
+                  <span class="tech-badge">Wave Scaling Timer</span>
+                  <span class="tech-badge highlight">IHittable / IDeathHandler</span>
+                </div>
+              </div>
+
+              <div class="project-actions-row">
+                <button class="project-link-btn" onclick="openCodeSnippet('health-interfaces')">
+                  <span>View Decoupled Health Interfaces</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/2dv/relentless_arena.jpg', 'Relentless Shooter - Arena Wave Survival')">
+                  Enlarge
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 6: OFFICE FURY / THE BILLS MUST BE PAID -->
+          <article class="project-card" data-category="jam architecture">
+            <div class="project-media-frame" style="background: linear-gradient(135deg, #111a2e, #0a0d18);">
+              <div style="text-align: center; padding: 2rem;">
+                <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🖥️ 💥</div>
+                <div style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700; font-size: 0.9rem;">
+                  PUBLISHER-BACKED JAM PROJECT
+                </div>
+              </div>
+
+              <div class="media-overlay-top">
+                <span class="project-badge-pill badge-gold">
+                  🏆 Jam 2nd Place Finalist
+                </span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div>
+                <div class="project-header-row">
+                  <h3 class="project-title">Office Fury</h3>
+                  <span class="project-badge-pill badge-gold">Published Post-Jam</span>
+                </div>
+                <div class="project-tagline">Physics Destruction with Pure C# Classes & DI</div>
+                <p class="project-description">
+                  Born from winning 2nd place in the Game Jam, this project was selected by a game publisher for development. Players smash office equipment (laptops, printers, TVs) in satisfying stress-relief gameplay.
+                </p>
+
+                <div class="architecture-callout-box">
+                  <div class="arch-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    Architecture: Milestone in DI Architecture
+                  </div>
+                  <div class="arch-desc">
+                    This project was Alaksiej's breakthrough transition from MonoBehaviour singletons to pure C# POCO classes injected via dependency injection, separating game simulation from rendering.
+                  </div>
+                </div>
+
+                <div class="project-tech-stack">
+                  <span class="tech-badge highlight">Pure C# POCO Classes</span>
+                  <span class="tech-badge highlight">Dependency Injection</span>
+                  <span class="tech-badge">Destruction Physics</span>
+                  <span class="tech-badge">Publisher Collaboration</span>
+                </div>
+              </div>
+
+              <div class="project-actions-row">
+                <a href="#principles" class="project-link-btn">
+                  <span>See DI Standards</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Code & Architecture Lab -->
+    <section class="section code-section" id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Technical Deep Dive</span>
+          <h2 class="section-title">Clean C# & Unity Architecture</h2>
+          <p class="section-desc">
+            Code isn't just about getting things on screen—it's about maintainability, testability, and zero allocation in hot loops. Inspect real production code snippets from my projects below.
+          </p>
+        </div>
+
+        <div class="code-viewer-container">
+          <!-- Window Header with Tabs -->
+          <div class="code-window-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+
+            <div class="code-tabs-nav" id="code-tabs">
+              <button class="code-tab-btn active" data-tab="spawn-service">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/></svg>
+                <span>SpawnService.cs (2DV_5)</span>
+              </button>
+              <button class="code-tab-btn" data-tab="weighted-random">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+                <span>WeightedRandomList.cs (Sunflower)</span>
+              </button>
+              <button class="code-tab-btn" data-tab="pool-service">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span>PoolService.cs (2DV_4)</span>
+              </button>
+              <button class="code-tab-btn" data-tab="health-interfaces">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                <span>Health & Interfaces (Relentless)</span>
+              </button>
+            </div>
+
+            <div class="code-actions">
+              <button class="copy-code-btn" id="copy-code-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span id="copy-btn-text">Copy Code</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Architecture Banner Explanation -->
+          <div class="code-meta-banner" id="code-meta-banner">
+            <div>
+              <div class="meta-title" id="meta-title">ScriptableObject Template Method Spawner</div>
+              <div class="meta-desc" id="meta-desc">
+                Polymorphic ScriptableObject architecture with generics. Decouples entity configuration from spawner logic; allows adding new obstacle/coin spawners without modifying existing managers.
+              </div>
+            </div>
+            <div class="meta-badges" id="meta-badges">
+              <span class="tech-badge highlight">Template Method</span>
+              <span class="tech-badge highlight">ScriptableObject</span>
+              <span class="tech-badge">Zero Singletons</span>
+              <span class="tech-badge">VContainer</span>
+            </div>
+          </div>
+
+          <!-- Code Content Area -->
+          <div class="code-pre-wrapper">
+            <pre class="code-pre"><code id="code-display"></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Principles & Standards Section -->
+    <section class="section" id="principles">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Engineering Standards</span>
+          <h2 class="section-title">How I Write Unity Code</h2>
+          <p class="section-desc">
+            Strict adherence to professional C# conventions, memory management, and modern Unity best practices. Here is the foundation behind every project I build.
+          </p>
+        </div>
+
+        <div class="principles-grid">
+          <!-- Principle 1 -->
+          <div class="principle-card">
+            <div class="principle-icon-box icon-cyan">🎮</div>
+            <h3 class="principle-title">New Input System Only</h3>
+            <p class="principle-desc">
+              Never use legacy <code>Input.GetKey</code> or messy dual systems. Clean <code>InputActionAsset</code> events with callback contexts, rebinding support, and decoupled input managers.
+            </p>
+            <div class="principle-quote">
+              "Event-driven inputs keep physics and movement decoupled from hardware polling."
+            </div>
+          </div>
+
+          <!-- Principle 2 -->
+          <div class="principle-card">
+            <div class="principle-icon-box icon-gold">💉</div>
+            <h3 class="principle-title">Dependency Injection (DI)</h3>
+            <p class="principle-desc">
+              Zero monolithic singletons. Using VContainer / Zenject with explicit <code>GameScope : LifetimeScope</code> registrations. Plain C# classes where MonoBehaviours are unnecessary.
+            </p>
+            <div class="principle-quote">
+              "Explicit dependencies make systems modular, testable, and free of hidden couplings."
+            </div>
+          </div>
+
+          <!-- Principle 3 -->
+          <div class="principle-card">
+            <div class="principle-icon-box icon-emerald">⚡</div>
+            <h3 class="principle-title">Lifecycle & Coroutines</h3>
+            <p class="principle-desc">
+              Deep understanding of Unity execution order (<code>Awake</code>, <code>OnEnable</code>, <code>Update</code>, <code>FixedUpdate</code>, <code>LateUpdate</code>). Cache <code>WaitForSeconds</code> in coroutines instead of running wasteful state checks in <code>Update()</code>.
+            </p>
+            <div class="principle-quote">
+              "Avoid Update() bloat. Use events and coroutines to execute logic only when needed."
+            </div>
+          </div>
+
+          <!-- Principle 4 -->
+          <div class="principle-card">
+            <div class="principle-icon-box icon-cyan">📦</div>
+            <h3 class="principle-title">Object Pooling & Zero GC</h3>
+            <p class="principle-desc">
+              Instantiating and destroying GameObjects causes garbage collection stutter. Custom <code>PoolService</code> with <code>IObjectResolver</code> pre-allocates and recycles bullets, enemies, and effects cleanly.
+            </p>
+            <div class="principle-quote">
+              "Predictable 60+ FPS frame times require eliminating runtime allocations."
+            </div>
+          </div>
+
+          <!-- Principle 5 -->
+          <div class="principle-card">
+            <div class="principle-icon-box icon-gold">📐</div>
+            <h3 class="principle-title">SOLID & Single Responsibility</h3>
+            <p class="principle-desc">
+              No 2,000-line God Classes. Clean encapsulation: public properties with private backing fields, decoupled interfaces (<code>IHittable</code>, <code>IDeathHandler</code>, <code>ITargetable</code>), and editor validation with <code>#if UNITY_EDITOR OnValidate()</code>.
+            </p>
+            <div class="principle-quote">
+              "Small, focused classes make game logic easy to extend, refactor, and reason about."
+            </div>
+          </div>
+
+          <!-- Principle 6 -->
+          <div class="principle-card">
+            <div class="principle-icon-box icon-emerald">🛠️</div>
+            <h3 class="principle-title">ScriptableObject Architecture</h3>
+            <p class="principle-desc">
+              Turn hardcoded values into modular, designer-friendly assets. Data-driven configurations for wave spawning, loot tables, and skill progression make balancing instant.
+            </p>
+            <div class="principle-quote">
+              "Designers can tweak balancing directly in the inspector without touching code."
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Sunflower Growth Simulator -->
+    <section class="section" id="simulator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Interactive Game Mechanics</span>
+          <h2 class="section-title">Sunflower Roguelite Simulator</h2>
+          <p class="section-desc">
+            Experience the core incremental growth loop from <em>Saulespuke Helianthus</em> right in your browser. Balance resources, watch the stem grow, unlock module slots, and trigger the exponential meta-progression formula!
+          </p>
+        </div>
+
+        <div class="sim-widget-card">
+          <div class="sim-info-col">
+            <h3>
+              <span>🌻</span>
+              <span>Growth & Needs Simulation</span>
+            </h3>
+            <p>
+              In the game, passive seed income is earned as the stem climbs. If any vital resource hits zero, a high-stakes timer counts down to game over. Click below to feed the sunflower and trigger growth stages!
+            </p>
+
+            <div class="sim-stats-meters">
+              <div class="meter-row">
+                <div class="meter-header">
+                  <span>💧 Water</span>
+                  <span id="sim-water-val">75%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill fill-water" id="sim-water-bar"></div>
+                </div>
+              </div>
+
+              <div class="meter-row">
+                <div class="meter-header">
+                  <span>☀️ Sunlight</span>
+                  <span id="sim-sun-val">60%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill fill-sun" id="sim-sun-bar"></div>
+                </div>
+              </div>
+
+              <div class="meter-row">
+                <div class="meter-header">
+                  <span>🌱 Minerals</span>
+                  <span id="sim-minerals-val">85%</span>
+                </div>
+                <div class="meter-track">
+                  <div class="meter-fill fill-minerals" id="sim-minerals-bar"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sim-btn-row">
+              <button class="btn btn-primary btn-sm" id="btn-water">💧 Water +25%</button>
+              <button class="btn btn-outline-gold btn-sm" id="btn-sun">☀️ Sun +25%</button>
+              <button class="btn btn-secondary btn-sm" id="btn-minerals">🌱 Minerals +25%</button>
+              <button class="btn btn-sm" id="btn-reset-evo" style="background: rgba(244, 63, 94, 0.2); border: 1px solid #f43f5e; color: #f43f5e;">
+                🔄 Meta Reset
+              </button>
+            </div>
+          </div>
+
+          <div class="sim-stage-visual">
+            <img src="assets/projects/sunflower/sunflower1.png" alt="Sunflower Growth Stage" class="sim-flower-img" id="sim-flower-img">
+            <div class="sim-height-indicator" id="sim-height-display">Height: 12.4m (Stage 1)</div>
+            <div class="sim-evo-multiplier" id="sim-evo-display">Roguelite Reset Multiplier: +8 Evolution Points</div>
+            <div style="font-size: 0.75rem; color: var(--accent-cyan); margin-top: 0.4rem;" id="sim-status-log">Stem growing steadily...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About & Polyglot Profile -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-bio-col">
+          <span class="section-eyebrow">Biography & Mindset</span>
+          <h2 class="section-title">Behind the Code</h2>
+          <p class="section-desc" style="margin-bottom: 1.25rem;">
+            My fascination with game development started at age 8 when my father brought home a book on Scratch. That initial spark turned into a lifelong obsession. In high school, when taught Pascal, I asked the teacher to code in C# instead—installing Visual Studio on the classroom PC and mastering C# fundamentals over the next two years.
+          </p>
+          <p class="section-desc" style="margin-bottom: 1.25rem;">
+            When entering university at <strong>BSUIR</strong> for Game Design, I expanded my technical horizon: teaching myself <strong>Blender 3D</strong> modeling, practicing relational databases (MySQL, PostgreSQL), and diving into advanced Unity architectures: serialization, events, SRP, dependency injection, and performance profiling.
+          </p>
+
+          <h4 style="margin-top: 1.5rem; font-size: 1rem; color: var(--text-main);">Languages Spoken:</h4>
+          <div class="language-pills-row">
+            <div class="lang-badge">
+              <span>Belarusian</span>
+              <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-badge">
+              <span>English</span>
+              <span class="lang-level">B2 - C1</span>
+            </div>
+            <div class="lang-badge">
+              <span>Polish</span>
+              <span class="lang-level">B1 - B2</span>
+            </div>
+            <div class="lang-badge">
+              <span>German</span>
+              <span class="lang-level">B1</span>
+            </div>
+            <div class="lang-badge">
+              <span>Russian</span>
+              <span class="lang-level">Native</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-highlights-card">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent-cyan);">
+            Key Milestones & Experience
+          </h3>
+
+          <div class="about-timeline">
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div class="timeline-date">CURRENT • 3RD YEAR</div>
+              <div class="timeline-title">BSUIR (Game Design Degree)</div>
+              <div class="timeline-desc">Specializing in gameplay mechanics, C# architecture, and interactive simulation.</div>
+            </div>
+
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div class="timeline-date">GAME JAM • 2ND PLACE</div>
+              <div class="timeline-title">Team Lead & Lead Programmer</div>
+              <div class="timeline-desc">Maintained Kanban board, created C# code agreements, mentored teammates, and delivered <em>Saulespuke Helianthus</em> in 72 hours.</div>
+            </div>
+
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div class="timeline-date">POST-JAM • PUBLISHER PROJECT</div>
+              <div class="timeline-title">Office Fury Development</div>
+              <div class="timeline-desc">Qualified for publisher development; architected pure C# classes and VContainer dependency injection.</div>
+            </div>
+
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div class="timeline-date">EARLY FOUNDATIONS</div>
+              <div class="timeline-title">Self-Taught Blender & High School C#</div>
+              <div class="timeline-desc">Mastered 3D asset workflows and two years of dedicated high-school C# application building.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Call to Action -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-eyebrow">Ready for Opportunities</span>
+          <h2 class="cta-title">Looking for an Architecture-Conscious Gameplay Programmer?</h2>
+          <p class="cta-desc">
+            I am actively seeking Junior Gameplay Developer positions, internships, or studio roles where I can build responsive mechanics, collaborate with designers, and write clean, scalable Unity C#.
+          </p>
+
+          <div class="contact-options-row">
+            <a href="mailto:aleksejslapik2007@gmail.com" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Email Alaksiej</span>
+            </a>
+
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-pill-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              <span>GitHub</span>
+            </a>
+
+            <button class="contact-pill-btn" id="copy-email-btn" onclick="copyContact('aleksejslapik2007@gmail.com', 'Email copied to clipboard!')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Email</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-row">
+      <div>
+        © 2026 Alaksiej. Designed for GitHub Pages. Built with clean HTML, CSS & JS.
+      </div>
+      <div>
+        Unity • C# • SOLID • VContainer DI • ScriptableObjects
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Screenshots -->
+  <div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close-btn" onclick="closeLightboxDirect()">✕</button>
+      <img src="" alt="Enlarged Preview" class="lightbox-img" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notice" id="toast-notice">
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
