@@ -3,12 +3,12 @@
    Interactive Client Script
    ========================================================================== */
 
-// --- 1. CODE SNIPPETS DATABASE ---
+// --- 1. CODE SNIPPETS DATABASE (FROM REAL PROJECT REPOSITORIES) ---
 const CODE_SNIPPETS = {
   'spawn-service': {
     title: 'Polymorphic ScriptableObject Spawner Architecture (2DV_5)',
-    description: 'Generic base class SpawnService<TSpawnData> deriving from AbstractSpawnService ScriptableObject. Decouples spawner behavior from scene managers, supports custom runtime parameters (angles, scale variation), and injects via pure VContainer without singletons.',
-    badges: ['Template Method', 'ScriptableObject', 'VContainer DI', 'Zero Singletons'],
+    description: 'My generic base class SpawnService<TSpawnData> deriving from AbstractSpawnService ScriptableObject. It completely decouples spawner behavior from scene managers, supports custom runtime parameters (angles, scale variation), and injects via pure VContainer without singletons.',
+    badges: ['Template Method', 'ScriptableObject', 'VContainer DI', 'Generics <T>'],
     code: `// Lab.Managers.Spawn.Services.AbstractSpawnService.cs
 using Lab.Pooling;
 using UnityEngine;
@@ -78,7 +78,7 @@ namespace Lab.Managers.Spawn.Services
 
   'weighted-random': {
     title: 'Reusable Generic Weighted Random Collection (Sunflower)',
-    description: 'Custom generic WeightedRandomList<T> implementing IReadOnlyList<T>. Features inspector serialization, cumulative probability weights, runtime dynamic weighting, and empty drop probability calculation. Written for the GameJam winner game.',
+    description: 'My custom generic WeightedRandomList<T> implementing IReadOnlyList<T>. Features inspector serialization, cumulative probability weights, runtime dynamic weighting, and empty drop probability calculation. Written for my GameJam winner project.',
     badges: ['Generics <T>', 'IReadOnlyList<T>', 'Serialization', 'Game Design Math'],
     code: `using System.Collections;
 using System.Collections.Generic;
@@ -167,7 +167,7 @@ namespace Sunflower.Utilities.WeightedRandom
 
   'pool-service': {
     title: 'Resolver-Integrated Object Pooling Engine (2DV_4)',
-    description: 'High-performance ObjectPool integrated with VContainer IObjectResolver. Resolves DI dependencies on freshly instantiated pooled entities, organizes hierarchy transforms, and provides zero-allocation TryGet recycling.',
+    description: 'My high-performance ObjectPool integrated with VContainer IObjectResolver. Resolves DI dependencies on freshly instantiated pooled entities, organizes hierarchy transforms, and provides zero-allocation TryGet recycling.',
     badges: ['VContainer IObjectResolver', 'Zero Allocation', 'Hierarchy Cleanliness'],
     code: `using System.Collections.Generic;
 using UnityEngine;
@@ -237,6 +237,24 @@ namespace Lab.Pooling
                 _pool.Enqueue(CreateInstance());
         }
 
+        public bool TryGet(out PooledEntity entity)
+        {
+            if (_pool.Count == 0)
+            {
+                if (!_data.CanGrow)
+                {
+                    entity = null;
+                    return false;
+                }
+                _pool.Enqueue(CreateInstance());
+            }
+
+            entity = _pool.Dequeue();
+            entity.gameObject.SetActive(true);
+            entity.OnSpawn();
+            return true;
+        }
+
         private PooledEntity CreateInstance()
         {
             // DI Resolver instantiates and injects all constructor dependencies
@@ -249,10 +267,91 @@ namespace Lab.Pooling
 }`
   },
 
+  'card-interaction': {
+    title: 'Event-Driven Card State & Interaction (2DV_3)',
+    description: 'Clean separation of input raycasting (IPointerClickHandler), card animation with cached WaitForSeconds, and decoupled completion events (Action OnAllPairsUsed) wired with VContainer.',
+    badges: ['Event-Driven (Action)', 'IPointerClickHandler', 'Cached Yield', 'VContainer'],
+    code: `using Lab.State.Move;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using VContainer;
+
+namespace Lab.Cards
+{
+    [RequireComponent(typeof(Card))]
+    public class CardInteraction : MonoBehaviour, IPointerClickHandler
+    {
+        [SerializeField] private float _flipDelayTime = 0.5f;
+
+        [Inject] private CurrentMove _currentMove;
+
+        private Card _card;
+        private bool _isFlipped;
+        private Coroutine _cardFlip;
+        private WaitForSeconds _flipDelay;
+
+        private void Awake()
+        {
+            _card = GetComponent<Card>();
+            _flipDelay = new WaitForSeconds(_flipDelayTime);
+        }
+
+        private void OnDisable() => StopAllCoroutines();
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (_isFlipped || _cardFlip != null)
+                return;
+
+            _card.FlipUpwards();
+            _currentMove.AddCard(_card);
+            _isFlipped = true;
+        }
+
+        public void OnMoveFinished(bool success)
+        {
+            if (!success)
+                _cardFlip = StartCoroutine(CardFlipBackwardsDelay());
+            else
+                _card.FinalizeState();
+        }
+
+        private IEnumerator CardFlipBackwardsDelay()
+        {
+            yield return _flipDelay;
+            _card.FlipBackwards();
+            _isFlipped = false;
+            _cardFlip = null;
+        }
+    }
+}
+
+// Lab.State.Cards.UsedPairs.cs
+namespace Lab.State.Cards
+{
+    public class UsedPairs
+    {
+        [Inject] private SpawnConfig _spawnConfig;
+        private int _usedPairsCount = 0;
+
+        // Decoupled event notifying listeners when all cards are resolved
+        public event System.Action OnAllPairsUsed;
+
+        public void AddUsedPair()
+        {
+            _usedPairsCount++;
+            if (_usedPairsCount == _spawnConfig.FrontSprites.Count)
+                OnAllPairsUsed?.Invoke();
+        }
+    }
+}`
+  },
+
   'health-interfaces': {
     title: 'Decoupled Combat Interfaces & Safety Validation',
     description: 'Decoupling damage reception (IHittable) from death reaction (IDeathHandler). Uses event-driven damage notifications, encapsulated backing fields, and #if UNITY_EDITOR OnValidate() to guarantee component integrity in the editor.',
-    badges: ['SOLID / Interface Segregation', 'OnValidate Safety', 'Event-Driven'],
+    badges: ['Event-Driven (Action)', 'Interface Segregation', 'OnValidate Safety'],
     code: `using System;
 using UnityEngine;
 
@@ -303,25 +402,32 @@ namespace Relentless.HealthSystem
   }
 };
 
-// --- 2. CODE VIEWER SYNTAX HIGHLIGHTING & TAB SWITCHING ---
+// --- 2. SINGLE-PASS C# SYNTAX HIGHLIGHTER (FIXES CLASS="CS-ATTR" BUG) ---
 function highlightCSharp(code) {
-  // Simple token regex highlighting for clean formatting
+  // First escape HTML entities
   const escaped = code
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
-  return escaped
-    // Comments
-    .replace(/(\/\/[^\n]*)/g, '<span class="cs-comment">$1</span>')
-    // Attributes like [SerializeField], [CreateAssetMenu]
-    .replace(/(\[[A-Za-z0-9_,\s\(\)\.\=\"\']+\])/g, '<span class="cs-attr">$1</span>')
-    // Keywords
-    .replace(/\b(using|namespace|public|protected|private|sealed|abstract|virtual|override|class|interface|struct|where|new|out|ref|return|base|this|get|set|yield|while|for|foreach|in|if|else|continue|default)\b/g, '<span class="cs-kw">$1</span>')
-    // Types
-    .replace(/\b(void|int|float|string|bool|var|Transform|Vector3|Vector2|Quaternion|GameObject|MonoBehaviour|ScriptableObject|IReadOnlyList|List|Queue|Dictionary|IEnumerator|IObjectResolver|PoolService|PooledEntity|SpawnContext|SpawnData|LaserSpawnData|IHittable|IDeathHandler|Health|Action|Random)\b/g, '<span class="cs-type">$1</span>')
-    // Numbers
-    .replace(/\b(\d+(\.\d+)?[fF]?)\b/g, '<span class="cs-num">$1</span>');
+  // Single-pass regex using group alternation:
+  // 1: Comments (//...)
+  // 2: Attributes ([...])
+  // 3: Strings ("...")
+  // 4: Keywords
+  // 5: Types
+  // 6: Numbers
+  const tokenRegex = /(\/\/[^\n]*)|(\[[A-Za-z0-9_,\s\(\)\.\=\+\-\*\"\'&;]+\])|("(?:\\.|[^"\\])*")|\b(using|namespace|public|protected|private|sealed|abstract|virtual|override|class|interface|struct|where|new|out|ref|return|base|this|get|set|yield|while|for|foreach|in|if|else|continue|default|event|readonly|static|const|typeof|as|is)\b|\b(void|int|float|string|bool|var|Transform|Vector3|Vector2|Quaternion|GameObject|MonoBehaviour|ScriptableObject|IReadOnlyList|List|Queue|Dictionary|IEnumerator|IObjectResolver|PoolService|PooledEntity|SpawnContext|SpawnData|LaserSpawnData|IHittable|IDeathHandler|Health|Action|Random|Sprite|SpriteRenderer|RequireComponent|AddComponentMenu|CreateAssetMenu|WaitForSeconds|WaitUntil|Coroutine|PointerEventData|IPointerClickHandler)\b|\b(\d+(\.\d+)?[fF]?)\b/g;
+
+  return escaped.replace(tokenRegex, (match, comment, attr, str, kw, type, num) => {
+    if (comment) return `<span class="cs-comment">${comment}</span>`;
+    if (attr) return `<span class="cs-attr">${attr}</span>`;
+    if (str) return `<span class="cs-str">${str}</span>`;
+    if (kw) return `<span class="cs-kw">${kw}</span>`;
+    if (type) return `<span class="cs-type">${type}</span>`;
+    if (num) return `<span class="cs-num">${num}</span>`;
+    return match;
+  });
 }
 
 function loadCodeSnippet(key) {
@@ -343,8 +449,8 @@ function loadCodeSnippet(key) {
   if (metaDesc) metaDesc.textContent = data.description;
   
   if (metaBadges) {
-    metaBadges.innerHTML = data.badges.map((b, i) => 
-      `<span class="tech-badge ${i < 2 ? 'highlight' : ''}">${b}</span>`
+    metaBadges.innerHTML = data.badges.map(b => 
+      `<span class="tech-badge">${b}</span>`
     ).join('');
   }
 
@@ -410,7 +516,7 @@ function initMediaSwitchTabs() {
 
         const newSrc = btn.getAttribute('data-src');
         if (targetImg && newSrc) {
-          targetImg.style.opacity = '0.4';
+          targetImg.style.opacity = '0.3';
           setTimeout(() => {
             targetImg.src = newSrc;
             targetImg.style.opacity = '1';
@@ -421,18 +527,32 @@ function initMediaSwitchTabs() {
   });
 }
 
-// --- 5. INTERACTIVE SUNFLOWER GROWTH SIMULATOR ---
+// --- 5. INTERACTIVE SUNFLOWER GROWTH SIMULATOR (ALL 9 AUTHENTIC STAGES) ---
 const SunflowerSim = {
   water: 75,
   sun: 60,
   minerals: 85,
-  height: 12.4,
+  height: 5.0,
   stage: 1,
-  evoMultiplier: 8,
+  evoMultiplier: 5,
+
+  // Growth thresholds matching GrowthStagesData ScriptableObject
+  stageThresholds: [
+    { stage: 1, maxHeight: 15.0, sprite: 'assets/projects/sunflower/sunflower1.png', label: 'Stage 1: Soil Sprout' },
+    { stage: 2, maxHeight: 30.0, sprite: 'assets/projects/sunflower/sunflower2.png', label: 'Stage 2: Rising Stem' },
+    { stage: 3, maxHeight: 45.0, sprite: 'assets/projects/sunflower/sunflower3.png', label: 'Stage 3: Leaf Emergence' },
+    { stage: 4, maxHeight: 60.0, sprite: 'assets/projects/sunflower/sunflower4.png', label: 'Stage 4: Elongation' },
+    { stage: 5, maxHeight: 80.0, sprite: 'assets/projects/sunflower/sunflower5.png', label: 'Stage 5: Bud Forming' },
+    { stage: 6, maxHeight: 105.0, sprite: 'assets/projects/sunflower/sunflower6.png', label: 'Stage 6: Expanding Head' },
+    { stage: 7, maxHeight: 130.0, sprite: 'assets/projects/sunflower/sunflower7.png', label: 'Stage 7: Petals Opening' },
+    { stage: 8, maxHeight: 160.0, sprite: 'assets/projects/sunflower/sunflower8.png', label: 'Stage 8: Mature Sunflower' },
+    { stage: 9, maxHeight: 999.0, sprite: 'assets/projects/sunflower/sunflower9.png', label: 'Stage 9: Giant Sky Bloom' }
+  ],
 
   init() {
     this.bindButtons();
     this.startDecayLoop();
+    this.updateStage();
     this.render();
   },
 
@@ -450,19 +570,19 @@ const SunflowerSim = {
 
   feed(type, amount) {
     this[type] = Math.min(100, this[type] + amount);
-    this.height += 2.5;
+    this.height += 4.5;
     this.updateStage();
     this.render();
-    showToast(`Fed ${type.toUpperCase()}! Stem grew by +2.5m.`);
+    showToast(`Fed ${type.toUpperCase()}! Stem grew to ${this.height.toFixed(1)}m`);
   },
 
   updateStage() {
-    if (this.height >= 45) {
-      this.stage = 3;
-    } else if (this.height >= 25) {
-      this.stage = 2;
-    } else {
-      this.stage = 1;
+    for (let i = 0; i < this.stageThresholds.length; i++) {
+      if (this.height < this.stageThresholds[i].maxHeight || i === this.stageThresholds.length - 1) {
+        this.stage = this.stageThresholds[i].stage;
+        this.currentStageData = this.stageThresholds[i];
+        break;
+      }
     }
 
     // Formula: Floor((Height ^ 1.35) * 0.4)
@@ -471,11 +591,10 @@ const SunflowerSim = {
 
   metaReset() {
     const earnedPoints = this.evoMultiplier;
-    this.height = 8.0;
+    this.height = 4.0;
     this.water = 80;
     this.sun = 70;
     this.minerals = 90;
-    this.stage = 1;
     this.updateStage();
     this.render();
     showToast(`🌟 Roguelite Reset! Earned +${earnedPoints} Evolution Points for Skill Tree!`);
@@ -488,7 +607,7 @@ const SunflowerSim = {
       this.minerals = Math.max(0, this.minerals - 0.5);
 
       if (this.water > 0 && this.sun > 0 && this.minerals > 0) {
-        this.height += 0.2;
+        this.height += 0.3;
         this.updateStage();
       }
       this.render();
@@ -517,22 +636,16 @@ const SunflowerSim = {
     if (sunVal) sunVal.textContent = `${Math.round(this.sun)}%`;
     if (mineralsVal) mineralsVal.textContent = `${Math.round(this.minerals)}%`;
 
-    if (heightDisp) {
-      heightDisp.textContent = `Height: ${this.height.toFixed(1)}m (Stage ${this.stage})`;
+    if (heightDisp && this.currentStageData) {
+      heightDisp.textContent = `Height: ${this.height.toFixed(1)}m (${this.currentStageData.label})`;
     }
 
     if (evoDisp) {
       evoDisp.textContent = `Roguelite Reset Multiplier: +${this.evoMultiplier} Evolution Points`;
     }
 
-    if (flowerImg) {
-      if (this.stage === 3) {
-        flowerImg.src = 'assets/projects/sunflower/sunflower9.png';
-      } else if (this.stage === 2) {
-        flowerImg.src = 'assets/projects/sunflower/sunflower3.png';
-      } else {
-        flowerImg.src = 'assets/projects/sunflower/sunflower1.png';
-      }
+    if (flowerImg && this.currentStageData) {
+      flowerImg.src = this.currentStageData.sprite;
     }
 
     if (statusLog) {
@@ -540,7 +653,7 @@ const SunflowerSim = {
         statusLog.textContent = '⚠️ Critical Alert: Resource depleted! Growth paused!';
         statusLog.style.color = '#f43f5e';
       } else {
-        statusLog.textContent = 'Stem growing steadily toward the clouds...';
+        statusLog.textContent = `StageSpritesSwap: Swapping sprites at ScriptableObject thresholds (${this.stage}/9)...`;
         statusLog.style.color = 'var(--accent-cyan)';
       }
     }
@@ -603,7 +716,6 @@ function copyContact(text, successMsg) {
 function initCopyCode() {
   const btn = document.getElementById('copy-code-btn');
   const textElem = document.getElementById('copy-btn-text');
-  const activeTabBtn = document.querySelector('.code-tab-btn.active');
 
   if (!btn) return;
 
@@ -636,16 +748,16 @@ function initAmbientCanvas() {
   });
 
   const particles = [];
-  const PARTICLE_COUNT = Math.min(55, Math.floor(width / 24));
+  const PARTICLE_COUNT = Math.min(50, Math.floor(width / 26));
 
   for (let i = 0; i < PARTICLE_COUNT; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.45,
-      vy: (Math.random() - 0.5) * 0.45,
-      radius: Math.random() * 1.6 + 0.8,
-      alpha: Math.random() * 0.5 + 0.2
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 1.5 + 0.8,
+      alpha: Math.random() * 0.45 + 0.2
     });
   }
 
@@ -658,11 +770,9 @@ function initAmbientCanvas() {
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
-    // Draw connection lines
     for (let i = 0; i < particles.length; i++) {
       const p1 = particles[i];
 
-      // Update positions
       p1.x += p1.vx;
       p1.y += p1.vy;
 
@@ -671,7 +781,6 @@ function initAmbientCanvas() {
       if (p1.y < 0) p1.y = height;
       if (p1.y > height) p1.y = 0;
 
-      // Mouse influence
       const dxMouse = mouse.x - p1.x;
       const dyMouse = mouse.y - p1.y;
       const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
@@ -680,25 +789,23 @@ function initAmbientCanvas() {
         p1.y -= dyMouse * 0.015;
       }
 
-      // Draw particle
       ctx.beginPath();
       ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 240, 255, ${p1.alpha * 0.7})`;
+      ctx.fillStyle = `rgba(0, 240, 255, ${p1.alpha * 0.6})`;
       ctx.fill();
 
-      // Connect near neighbors
       for (let j = i + 1; j < particles.length; j++) {
         const p2 = particles[j];
         const dx = p1.x - p2.x;
         const dy = p1.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 110) {
+        if (dist < 105) {
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${0.12 * (1 - dist / 110)})`;
-          ctx.lineWidth = 0.6;
+          ctx.strokeStyle = `rgba(0, 240, 255, ${0.1 * (1 - dist / 105)})`;
+          ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
@@ -710,7 +817,7 @@ function initAmbientCanvas() {
   draw();
 }
 
-// --- 10. MOBILE MENU & SCROLL SPY ---
+// --- 10. NAVIGATION & SCROLL SPY ---
 function initNavigation() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const navLinks = document.getElementById('nav-links');
@@ -727,7 +834,6 @@ function initNavigation() {
     });
   }
 
-  // Active section indicator on scroll
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
     const scrollY = window.pageYOffset;
