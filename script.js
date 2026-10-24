@@ -538,15 +538,15 @@ const SunflowerSim = {
 
   // Growth thresholds matching GrowthStagesData ScriptableObject
   stageThresholds: [
-    { stage: 1, maxHeight: 15.0, sprite: 'assets/projects/sunflower/sunflower1.png', label: 'Stage 1: Soil Sprout' },
-    { stage: 2, maxHeight: 30.0, sprite: 'assets/projects/sunflower/sunflower2.png', label: 'Stage 2: Rising Stem' },
-    { stage: 3, maxHeight: 45.0, sprite: 'assets/projects/sunflower/sunflower3.png', label: 'Stage 3: Leaf Emergence' },
-    { stage: 4, maxHeight: 60.0, sprite: 'assets/projects/sunflower/sunflower4.png', label: 'Stage 4: Elongation' },
+    { stage: 1, maxHeight: 15.0, sprite: 'assets/projects/sunflower/sunflower9.png', label: 'Stage 1: Soil Sprout' },
+    { stage: 2, maxHeight: 30.0, sprite: 'assets/projects/sunflower/sunflower8.png', label: 'Stage 2: Rising Stem' },
+    { stage: 3, maxHeight: 45.0, sprite: 'assets/projects/sunflower/sunflower7.png', label: 'Stage 3: Leaf Emergence' },
+    { stage: 4, maxHeight: 60.0, sprite: 'assets/projects/sunflower/sunflower6.png', label: 'Stage 4: Elongation' },
     { stage: 5, maxHeight: 80.0, sprite: 'assets/projects/sunflower/sunflower5.png', label: 'Stage 5: Bud Forming' },
-    { stage: 6, maxHeight: 105.0, sprite: 'assets/projects/sunflower/sunflower6.png', label: 'Stage 6: Expanding Head' },
-    { stage: 7, maxHeight: 130.0, sprite: 'assets/projects/sunflower/sunflower7.png', label: 'Stage 7: Petals Opening' },
-    { stage: 8, maxHeight: 160.0, sprite: 'assets/projects/sunflower/sunflower8.png', label: 'Stage 8: Mature Sunflower' },
-    { stage: 9, maxHeight: 999.0, sprite: 'assets/projects/sunflower/sunflower9.png', label: 'Stage 9: Giant Sky Bloom' }
+    { stage: 6, maxHeight: 105.0, sprite: 'assets/projects/sunflower/sunflower4.png', label: 'Stage 6: Expanding Head' },
+    { stage: 7, maxHeight: 130.0, sprite: 'assets/projects/sunflower/sunflower3.png', label: 'Stage 7: Petals Opening' },
+    { stage: 8, maxHeight: 160.0, sprite: 'assets/projects/sunflower/sunflower2.png', label: 'Stage 8: Mature Sunflower' },
+    { stage: 9, maxHeight: 999.0, sprite: 'assets/projects/sunflower/sunflower1.png', label: 'Stage 9: Giant Sky Bloom' }
   ],
 
   init() {
@@ -585,8 +585,9 @@ const SunflowerSim = {
       }
     }
 
-    // Formula: Floor((Height ^ 1.35) * 0.4)
-    this.evoMultiplier = Math.floor(Math.pow(this.height, 1.35) * 0.4);
+    // Unity Formula: (int)(1 / 9f * Mathf.Pow(x, Mathf.Log(3, 2) * 1.2f))
+    const exponent = Math.log2(3) * 1.2;
+    this.evoMultiplier = Math.max(0, Math.floor((1 / 9) * Math.pow(this.height, exponent)));
   },
 
   metaReset() {

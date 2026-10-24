@@ -288,18 +288,23 @@ body {
 
 /* Hero Section */
 .hero-section {
-  padding-top: 5.5rem;
-  padding-bottom: 2.5rem;
-  min-height: calc(100vh - 65px);
+  padding-top: 4.25rem;
+  padding-bottom: 1.5rem;
+  min-height: auto;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.25fr 0.85fr;
-  gap: 3rem;
-  align-items: center;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.hero-text-col {
+  padding-top: 0;
+  margin-top: -0.25rem;
 }
 
 .hero-status-pill {
@@ -313,7 +318,7 @@ body {
   color: #34d399;
   font-size: 0.82rem;
   font-weight: 600;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.5rem;
 }
 
 .status-dot {
@@ -331,11 +336,11 @@ body {
 }
 
 .hero-title {
-  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
+  font-size: clamp(1.85rem, 3vw, 2.65rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.65rem;
 }
 
 .hero-title .gradient-text {
@@ -345,10 +350,10 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-muted);
-  line-height: 1.55;
-  margin-bottom: 1.4rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
   max-width: 620px;
 }
 
@@ -361,14 +366,14 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.15rem;
 }
 
 .hero-stats-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  padding-top: 1.1rem;
+  padding-top: 0.85rem;
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -1123,8 +1128,32 @@ body {
 
 .principles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
+}
+
+@media (min-width: 992px) {
+  .principles-grid .principle-card:nth-child(7) {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 991px) {
+  .principles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .principles-grid .principle-card:nth-child(7) {
+    grid-column: 1 / -1;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .principle-card {
@@ -1673,10 +1702,28 @@ body {
 /* Responsive Contact Grid */
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
   margin-top: 2.25rem;
   text-align: left;
+}
+
+@media (min-width: 992px) {
+  .contact-grid .contact-card:nth-child(4) {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 991px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contact-card {
