@@ -534,7 +534,11 @@ const SunflowerSim = {
   minerals: 85,
   height: 5.0,
   stage: 1,
-  evoMultiplier: 5,
+  evoMultiplier: 0, // preview: points you would get if you reset right now
+  evoPoints: 0,     // banked total, only changes on meta reset
+
+  // Single source of truth for the start state, also used by metaReset()
+  initialState: { water: 75, sun: 60, minerals: 85, height: 5.0 },
 
   // Growth thresholds matching GrowthStagesData ScriptableObject
   stageThresholds: [
@@ -568,9 +572,14 @@ const SunflowerSim = {
     if (btnReset) btnReset.addEventListener('click', () => this.metaReset());
   },
 
+  // Unity: (int)(1 / 9f * Mathf.Pow(x, Mathf.Log(3, 2) * 1.2f)), where x = height
+  calcEvoPoints(height) {
+    const exponent = Math.log2(3) * 1.2;
+    return Math.max(0, Math.floor((1 / 9) * Math.pow(height, exponent)));
+  },
+
   feed(type, amount) {
     this[type] = Math.min(100, this[type] + amount);
-    this.height += 4.5;
     this.updateStage();
     this.render();
     showToast(`Fed ${type.toUpperCase()}! Stem grew to ${this.height.toFixed(1)}m`);
@@ -584,21 +593,23 @@ const SunflowerSim = {
         break;
       }
     }
-
-    // Unity Formula: (int)(1 / 9f * Mathf.Pow(x, Mathf.Log(3, 2) * 1.2f))
-    const exponent = Math.log2(3) * 1.2;
-    this.evoMultiplier = Math.max(0, Math.floor((1 / 9) * Math.pow(this.height, exponent)));
+    // Preview only: no points are awarded here
+    this.evoMultiplier = this.calcEvoPoints(this.height);
   },
 
+  // The only place where points are actually awarded
   metaReset() {
-    const earnedPoints = this.evoMultiplier;
-    this.height = 4.0;
-    this.water = 80;
-    this.sun = 70;
-    this.minerals = 90;
+    const earned = this.calcEvoPoints(this.height);
+    this.evoPoints += earned;
+
+    this.height = this.initialState.height;
+    this.water = this.initialState.water;
+    this.sun = this.initialState.sun;
+    this.minerals = this.initialState.minerals;
+
     this.updateStage();
     this.render();
-    showToast(`🌟 Roguelite Reset! Earned +${earnedPoints} Evolution Points for Skill Tree!`);
+    showToast(`🌟 Roguelite Reset! +${earned} Evolution Points (total: ${this.evoPoints})`);
   },
 
   startDecayLoop() {
@@ -608,7 +619,7 @@ const SunflowerSim = {
       this.minerals = Math.max(0, this.minerals - 0.5);
 
       if (this.water > 0 && this.sun > 0 && this.minerals > 0) {
-        this.height += 0.3;
+        this.height += 1;
         this.updateStage();
       }
       this.render();
@@ -642,7 +653,7 @@ const SunflowerSim = {
     }
 
     if (evoDisp) {
-      evoDisp.textContent = `Roguelite Reset Multiplier: +${this.evoMultiplier} Evolution Points`;
+      evoDisp.textContent = `Evolution Points: ${this.evoPoints} (reset now: +${this.evoMultiplier})`;
     }
 
     if (flowerImg && this.currentStageData) {
