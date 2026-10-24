@@ -1121,10 +1121,9 @@ body {
 .cs-attr { color: #c084fc; font-weight: 600; }      /* attributes: [SerializeField], [Inject] */
 .cs-fn { color: #67e8f9; }                          /* functions */
 
-/* Engineering Principles & Standards Grid (No Odd Quotes) */
 .principles-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.75rem;
 }
 
@@ -1604,3 +1603,186 @@ body {
     padding: 2rem 1.5rem;
   }
 }
+
+/* ==========================================================================
+   ENHANCED COMPONENTS & UTILITIES
+   ========================================================================== */
+
+/* itch.io Playable Build Button */
+.btn-itch {
+  background: rgba(250, 92, 92, 0.15);
+  color: #ff6b6b;
+  border: 1px solid rgba(250, 92, 92, 0.45);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-itch:hover {
+  background: #fa5c5c;
+  color: #ffffff;
+  border-color: #fa5c5c;
+  box-shadow: 0 4px 20px rgba(250, 92, 92, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Principle Code Link (Direct Proof Link) */
+.principle-code-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.principle-code-link:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+/* Nav Telegram Pill */
+.nav-pill-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--accent-cyan);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.nav-pill-tg:hover {
+  background: rgba(0, 240, 255, 0.2);
+  border-color: var(--accent-cyan);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Responsive Contact Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.25rem;
+  text-align: left;
+}
+
+.contact-card {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  backdrop-filter: blur(12px);
+  transition: all var(--transition-fast);
+}
+
+.contact-card:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(15, 23, 42, 0.92);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+}
+
+.contact-card-icon.tg {
+  background: rgba(36, 161, 222, 0.15);
+  color: #24a1de;
+}
+
+.contact-card-icon.itch {
+  background: rgba(250, 92, 92, 0.15);
+  color: #fa5c5c;
+}
+
+.contact-card-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.contact-card-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+.contact-card-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+/* Card Game Mat Display */
+.cards-mat-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  background: radial-gradient(circle at center, #132238 0%, #070b14 100%);
+  width: 100%;
+  min-height: 280px;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto;
+}
+
+.mini-card-item {
+  width: 82px;
+  height: 120px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  background: #0d1525;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.mini-card-item:hover {
+  transform: translateY(-8px) scale(1.06);
+  box-shadow: 0 14px 28px rgba(0, 240, 255, 0.25);
+  border-color: var(--accent-cyan);
+}
+
+.mini-card-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

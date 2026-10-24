@@ -6,8 +6,8 @@
 // --- 1. CODE SNIPPETS DATABASE (FROM REAL PROJECT REPOSITORIES) ---
 const CODE_SNIPPETS = {
   'spawn-service': {
-    title: 'Polymorphic ScriptableObject Spawner Architecture (2DV_5)',
-    description: 'My generic base class SpawnService<TSpawnData> deriving from AbstractSpawnService ScriptableObject. It completely decouples spawner behavior from scene managers, supports custom runtime parameters (angles, scale variation), and injects via pure VContainer without singletons.',
+    title: 'Polymorphic ScriptableObject Spawner Architecture (Jetpack Runner / 2DV_5)',
+    description: 'Generic base class SpawnService<TSpawnData> deriving from AbstractSpawnService ScriptableObject. Decouples spawner behavior from scene managers, supports custom runtime parameters (angles, scale variation), and injects via pure VContainer without singletons.',
     badges: ['Template Method', 'ScriptableObject', 'VContainer DI', 'Generics <T>'],
     code: `// Lab.Managers.Spawn.Services.AbstractSpawnService.cs
 using Lab.Pooling;
@@ -166,9 +166,9 @@ namespace Sunflower.Utilities.WeightedRandom
   },
 
   'pool-service': {
-    title: 'Resolver-Integrated Object Pooling Engine (2DV_4)',
-    description: 'My high-performance ObjectPool integrated with VContainer IObjectResolver. Resolves DI dependencies on freshly instantiated pooled entities, organizes hierarchy transforms, and provides zero-allocation TryGet recycling.',
-    badges: ['VContainer IObjectResolver', 'Zero Allocation', 'Hierarchy Cleanliness'],
+    title: 'Resolver-Integrated Object Pooling Engine (Sky Battle / 2DV_4)',
+    description: 'Custom ObjectPool integrated with VContainer IObjectResolver. Resolves DI dependencies on freshly instantiated pooled entities, organizes hierarchy transforms, and provides pooled entity recycling.',
+    badges: ['VContainer IObjectResolver', 'Allocation Control', 'Hierarchy Cleanliness'],
     code: `using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
@@ -268,9 +268,9 @@ namespace Lab.Pooling
   },
 
   'card-interaction': {
-    title: 'Event-Driven Card State & Interaction (2DV_3)',
+    title: 'Event-Driven Card State & Interaction (Fable Pairs / 2DV_3)',
     description: 'Clean separation of input raycasting (IPointerClickHandler), card animation with cached WaitForSeconds, and decoupled completion events (Action OnAllPairsUsed) wired with VContainer.',
-    badges: ['Event-Driven (Action)', 'IPointerClickHandler', 'Cached Yield', 'VContainer'],
+    badges: ['Event-Driven (Action)', 'IPointerClickHandler', 'Cached Yield', 'VContainer DI'],
     code: `using Lab.State.Move;
 using System.Collections;
 using UnityEngine;
