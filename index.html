@@ -49,7 +49,6 @@
           <li><a href="#projects" class="nav-link">My Projects</a></li>
           <li><a href="#architecture" class="nav-link">Code & Architecture</a></li>
           <li><a href="#principles" class="nav-link">Engineering Standards</a></li>
-          <li><a href="#simulator" class="nav-link">Interactive Demo</a></li>
           <li><a href="#about" class="nav-link">About Me</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -77,7 +76,7 @@
           </h1>
 
           <p class="hero-subtitle">
-            Hi, I’m <strong>Alaksiej</strong>. 19-year-old 3rd-year Game Design student at BSUIR and a dedicated <strong>Unity Gameplay Developer</strong>. I build performant gameplay systems with <strong>SOLID principles</strong>, focusing on <strong>event-driven architecture</strong> and pure <strong>Dependency Injection (VContainer)</strong> to maintain decoupled, robust game loops.
+            Hi, I’m <strong>Alaksiej</strong>. 19-year-old 3rd-year Game Design student at BSUIR and a dedicated <strong>Unity Gameplay Developer</strong>. I build performant gameplay systems with <strong>SOLID principles</strong>, focusing on <strong>event-driven architecture</strong> and pure <strong>Dependency Injection (VContainer)</strong> to maintain decoupled, robust game loops. I write all of my game code myself: <strong>I don\'t use generative AI for it</strong>.
           </p>
 
           <div class="hero-actions">
@@ -191,22 +190,18 @@
 
           <!-- PROJECT 1: SUNFLOWER (SAULESPUKE HELIANTHUS) - FEATURED -->
           <article class="project-card featured" data-category="jam architecture">
-            <div class="project-media-frame">
-              <img src="assets/projects/sunflower/desert_bg_2.jpg" 
-                   alt="Saulespuke Helianthus Gameplay Preview" 
-                   class="project-img" 
-                   id="sunflower-media-target">
-              
-              <div class="media-overlay-top">
-                <span class="project-badge-pill badge-gold">
-                  🏆 2nd Place Game Jam Winner
-                </span>
-                
-                <div class="media-switch-tabs" data-target="sunflower-media-target">
-                  <button class="media-tab-btn active" data-src="assets/projects/sunflower/desert_bg_2.jpg">Combat</button>
-                  <button class="media-tab-btn" data-src="assets/projects/sunflower/desert_bg_4.jpg">Solar</button>
-                  <button class="media-tab-btn" data-src="assets/projects/sunflower/desert_bg_3.jpg">Ascent</button>
-                  <button class="media-tab-btn" data-src="assets/projects/sunflower/MenuBG.png">Title</button>
+            <div class="project-media-col">
+              <div class="project-media-frame">
+                <img src="assets/gifs/sunflower_gameplay.gif"
+                     alt="Saulespuke Helianthus gameplay"
+                     class="project-img"
+                     width="800" height="450"
+                     loading="lazy">
+
+                <div class="media-overlay-top">
+                  <span class="project-badge-pill badge-gold">
+                    🏆 2nd Place Game Jam Winner
+                  </span>
                 </div>
               </div>
             </div>
@@ -251,7 +246,7 @@
                   <span>Inspect WeightedRandomList Code</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
-                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/sunflower/desert_bg_2.jpg', 'Saulespuke Helianthus - Turret Defense & Bee Waves')">
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/gifs/sunflower_gameplay.gif', 'Saulespuke Helianthus - Gameplay')">
                   Enlarge
                 </button>
               </div>
@@ -261,10 +256,11 @@
           <!-- PROJECT 2: JETPACK RUNNER (2DV_5) -->
           <article class="project-card" data-category="labs architecture">
             <div class="project-media-frame">
-              <img src="assets/projects/2dv/runner_gameplay.jpg" 
-                   alt="Jetpack Runner Gameplay Preview" 
-                   class="project-img" 
-                   id="runner-media-target">
+              <img src="assets/gifs/2dv5_runner.gif"
+                   alt="Jetpack Runner gameplay"
+                   class="project-img"
+                   width="800" height="450"
+                   loading="lazy">
 
               <div class="media-overlay-top">
                 <span class="project-badge-pill badge-cyan">
@@ -308,7 +304,7 @@
                   <span>View SpawnService Architecture</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
-                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/2dv/runner_gameplay.jpg', 'Jetpack Runner (2DV_5) - Laser Obstacles & Spawner Architecture')">
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/gifs/2dv5_runner.gif', 'Jetpack Runner (2DV_5) - Gameplay')">
                   Enlarge
                 </button>
               </div>
@@ -318,27 +314,23 @@
           <!-- PROJECT 3: SKY BATTLE (2DV_4) -->
           <article class="project-card" data-category="labs architecture">
             <div class="project-media-frame">
-              <img src="assets/projects/2dv/floating_islands_seamless_pixel_art.png" 
-                   alt="Sky Battle Steampunk Airship Combat" 
-                   class="project-img" 
-                   id="airship-media-target">
+              <img src="assets/gifs/2dv4_airship.gif"
+                   alt="Sky Battle gameplay"
+                   class="project-img"
+                   width="800" height="450"
+                   loading="lazy">
 
               <div class="media-overlay-top">
                 <span class="project-badge-pill badge-purple">
                   🛸 2DV_4 Lab • Airships
                 </span>
-                <div class="media-switch-tabs" data-target="airship-media-target">
-                  <button class="media-tab-btn active" data-src="assets/projects/2dv/floating_islands_seamless_pixel_art.png">Islands</button>
-                  <button class="media-tab-btn" data-src="assets/projects/2dv/Player.png">Airship</button>
-                  <button class="media-tab-btn" data-src="assets/projects/2dv/Enemy.png">Zeppelin</button>
-                </div>
               </div>
             </div>
 
             <div class="project-content">
               <div>
                 <div class="project-header-row">
-                  <h3 class="project-title">Sky Battle: Steampunk Airships</h3>
+                  <h3 class="project-title">Sky Battle</h3>
                   <span class="project-badge-pill badge-purple">Object Pooling</span>
                 </div>
                 <div class="project-tagline">2DV_4 University Lab • 2D Wave Combat with Object Pooling Engine</div>
@@ -374,7 +366,7 @@
                   <span>View PoolService Code</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
-                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/2dv/floating_islands_seamless_pixel_art.png', 'Sky Battle (2DV_4) - Floating Islands World')">
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/gifs/2dv4_airship.gif', 'Sky Battle (2DV_4) - Gameplay')">
                   Enlarge
                 </button>
               </div>
@@ -384,20 +376,11 @@
           <!-- PROJECT 4: FABLE PAIRS (2DV_3) -->
           <article class="project-card" data-category="labs">
             <div class="project-media-frame">
-              <div class="cards-mat-display">
-                <div class="mini-card-item" onclick="openLightbox('assets/projects/cards/01_fox.png', 'Fable Pairs - Fox Card')">
-                  <img src="assets/projects/cards/01_fox.png" alt="Fox Card">
-                </div>
-                <div class="mini-card-item" onclick="openLightbox('assets/projects/cards/02_owl.png', 'Fable Pairs - Owl Card')">
-                  <img src="assets/projects/cards/02_owl.png" alt="Owl Card">
-                </div>
-                <div class="mini-card-item" onclick="openLightbox('assets/projects/cards/03_rabbit.png', 'Fable Pairs - Rabbit Card')">
-                  <img src="assets/projects/cards/03_rabbit.png" alt="Rabbit Card">
-                </div>
-                <div class="mini-card-item" onclick="openLightbox('assets/projects/cards/11_card_back.png', 'Fable Pairs - Card Back Pattern')">
-                  <img src="assets/projects/cards/11_card_back.png" alt="Card Back">
-                </div>
-              </div>
+              <img src="assets/gifs/2dv3_cards.gif"
+                   alt="Fable Pairs gameplay"
+                   class="project-img"
+                   width="800" height="450"
+                   loading="lazy">
 
               <div class="media-overlay-top">
                 <span class="project-badge-pill badge-emerald">
@@ -440,7 +423,7 @@
                   <span>View Card Interaction Code</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </button>
-                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/cards/01_fox.png', 'Fable Pairs - Card Art Preview')">
+                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/gifs/2dv3_cards.gif', 'Fable Pairs - Gameplay')">
                   Enlarge
                 </button>
               </div>
@@ -450,10 +433,11 @@
           <!-- PROJECT 5: RELENTLESS SHOOTER (SYSTEMS SHOWCASE) -->
           <article class="project-card" data-category="architecture">
             <div class="project-media-frame">
-              <img src="assets/projects/relentless_gameplay.jpg" 
-                   alt="Relentless Shooter Combat Preview" 
-                   class="project-img" 
-                   id="relentless-media-target">
+              <div class="clean-placeholder-frame">
+                <div class="placeholder-icon">🛠️</div>
+                <div class="placeholder-title">Work in Progress</div>
+                <div class="placeholder-desc">Gameplay footage coming soon</div>
+              </div>
 
               <div class="media-overlay-top">
                 <span class="project-badge-pill badge-cyan">
@@ -496,9 +480,6 @@
                 <button class="project-link-btn" onclick="openCodeSnippet('health-interfaces')">
                   <span>View Decoupled Health Interfaces</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-                <button class="btn btn-secondary btn-sm" onclick="openLightbox('assets/projects/relentless_gameplay.jpg', 'Relentless Shooter - Wave Survival & Custom Hotbar UI')">
-                  Enlarge
                 </button>
               </div>
             </div>
@@ -728,84 +709,19 @@
             </button>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Interactive Sunflower Growth Simulator -->
-    <section class="section" id="simulator">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">Interactive Mechanics Demo</span>
-          <h2 class="section-title">Sunflower Growth Simulator</h2>
-          <p class="section-desc">
-            An interactive simulator demonstrating the core growth loop from <em>Saulespuke Helianthus</em>. In the actual game, all 9 visual stages are swapped via <code>GrowthStagesData : ScriptableObject</code> and coroutine thresholds. <br>
-            <a href="https://evarite.itch.io/saulespukehelianthus" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); text-decoration: underline; font-weight: 600; font-size: 0.95rem; display: inline-block; margin-top: 0.4rem;">
-              Play the full release on itch.io ↗
-            </a>
-          </p>
-        </div>
-
-        <div class="sim-widget-card">
-          <div class="sim-info-col">
-            <h3>
-              <span>🌻</span>
-              <span>Growth & Needs Simulation</span>
-            </h3>
-            <p>
-              In the game, passive seed income is earned as the stem climbs. If any vital resource hits zero, a high-stakes timer counts down to game over. Click below to feed the sunflower and advance through all 9 growth stages!
+        <div class="principle-card principle-wide">
+          <div class="principle-icon-box">✍️</div>
+          <div>
+            <h3 class="principle-title">Hand-Written Gameplay Code</h3>
+            <p class="principle-desc">
+              I don't use generative AI to write my game code. I may use it as a helper for tracking down bugs, but never for generating systems or features: the architecture and the implementation are my own work.
             </p>
-
-            <div class="sim-stats-meters">
-              <div class="meter-row">
-                <div class="meter-header">
-                  <span>💧 Water</span>
-                  <span id="sim-water-val">75%</span>
-                </div>
-                <div class="meter-track">
-                  <div class="meter-fill fill-water" id="sim-water-bar"></div>
-                </div>
-              </div>
-
-              <div class="meter-row">
-                <div class="meter-header">
-                  <span>☀️ Sunlight</span>
-                  <span id="sim-sun-val">60%</span>
-                </div>
-                <div class="meter-track">
-                  <div class="meter-fill fill-sun" id="sim-sun-bar"></div>
-                </div>
-              </div>
-
-              <div class="meter-row">
-                <div class="meter-header">
-                  <span>🌱 Minerals</span>
-                  <span id="sim-minerals-val">85%</span>
-                </div>
-                <div class="meter-track">
-                  <div class="meter-fill fill-minerals" id="sim-minerals-bar"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="sim-btn-row">
-              <button class="btn btn-primary btn-sm" id="btn-water">💧 Water +25%</button>
-              <button class="btn btn-outline-gold btn-sm" id="btn-sun">☀️ Sun +25%</button>
-              <button class="btn btn-secondary btn-sm" id="btn-minerals">🌱 Minerals +25%</button>
-              <button class="btn btn-sm" id="btn-reset-evo" style="background: rgba(244, 63, 94, 0.2); border: 1px solid #f43f5e; color: #f43f5e;">
-                🔄 Meta Reset
-              </button>
-            </div>
-          </div>
-
-          <div class="sim-stage-visual">
-            <img src="assets/projects/sunflower/sunflower9.png" alt="Sunflower Growth Stage" class="sim-flower-img" id="sim-flower-img">
-            <div class="sim-height-indicator" id="sim-height-display">Height: 5.0m (Stage 1: Soil Sprout)</div>
-            <div class="sim-evo-multiplier" id="sim-evo-display">Roguelite Reset Multiplier: +2 Evolution Points</div>
-            <div style="font-size: 0.75rem; color: var(--accent-cyan); margin-top: 0.4rem;" id="sim-status-log">StageSpritesSwap: Swapping sprites at ScriptableObject thresholds (1/9)...</div>
           </div>
         </div>
       </div>
     </section>
+
 
     <!-- About & Polyglot Profile -->
     <section class="section" id="about">

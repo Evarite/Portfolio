@@ -16,19 +16,18 @@ A responsive static portfolio website designed for GitHub Pages, showcasing Unit
    ```
 3. Go to **Settings** > **Pages** in your GitHub repository and select the `main` branch root (`/`). Your site will be live!
 
-## 🎮 How to Add Gameplay GIFs
+## 🎮 Gameplay GIFs
 
-Place your recorded gameplay GIFs in the `assets/gifs/` directory using the following names:
+Project previews live in `assets/gifs/` (800x450):
 - `sunflower_gameplay.gif` (Saulespuke Helianthus)
-- `2dv5_runner.gif` (Infinite Jetpack Runner)
-- `2dv4_airship.gif` (Steampunk Airship Combat)
-- `relentless_combat.gif` (Relentless Shooter Combat)
-- `2dv3_cards.gif` (Card Memory Matching)
+- `2dv3_cards.gif` (Fable Pairs)
+- `2dv4_airship.gif` (Sky Battle)
+- `2dv5_runner.gif` (Jetpack Runner)
 
-The website is already programmed to detect and highlight these preview slots.
+Relentless Shooter shows a "Work in Progress" placeholder until it has footage.
 
 ## 🛠️ Tech Stack
 - Pure Semantic HTML5 & SEO Meta Tags
 - Bespoke Vanilla CSS (Dark theme, glassmorphism, responsive grid, no heavy frameworks)
-- Interactive JavaScript (Particle canvas, C# syntax highlighter, roguelite simulator widget, media switcher)
+- Interactive JavaScript (Particle canvas, C# syntax highlighter, project filter)
 

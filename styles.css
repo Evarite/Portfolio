@@ -692,7 +692,7 @@ body {
 .project-card.featured {
   grid-column: span 12;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
 }
 
 /* Project Media Frame */
@@ -700,32 +700,33 @@ body {
   position: relative;
   background: #090e18;
   overflow: hidden;
-  min-height: 280px;
+  aspect-ratio: 16 / 9; /* matches the 800x450 gameplay GIFs, so nothing is cropped */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.project-card.featured .project-media-frame {
-  min-height: 420px;
+/* Featured card: dark column so the 16:9 frame is letterboxed cleanly next to taller text */
+.project-media-col {
+  background: #090e18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
 }
 
 .project-img {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-card:hover .project-img {
-  transform: scale(1.04);
+  object-fit: contain;
 }
 
 /* Clean Authentic Placeholder Frame (No AI art) */
 .clean-placeholder-frame {
   width: 100%;
   height: 100%;
-  min-height: 280px;
   background: radial-gradient(circle at center, rgba(17, 26, 46, 0.95), #07090e);
   display: flex;
   flex-direction: column;
@@ -804,34 +805,6 @@ body {
   color: var(--accent-purple);
   border-color: rgba(168, 85, 247, 0.4);
   background: rgba(168, 85, 247, 0.15);
-}
-
-.media-switch-tabs {
-  pointer-events: auto;
-  display: flex;
-  gap: 0.3rem;
-  background: rgba(10, 15, 26, 0.85);
-  padding: 0.25rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-subtle);
-  backdrop-filter: blur(8px);
-}
-
-.media-tab-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.25rem 0.55rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.media-tab-btn.active, .media-tab-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--text-main);
 }
 
 /* GIF Slot Callout */
@@ -1197,116 +1170,6 @@ body {
   line-height: 1.55;
 }
 
-/* Interactive Sunflower Growth Simulator Widget */
-.sim-widget-card {
-  background: linear-gradient(135deg, rgba(18, 28, 48, 0.85), rgba(10, 15, 26, 0.9));
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-top: 3rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(251, 191, 36, 0.1);
-}
-
-.sim-info-col h3 {
-  font-size: 1.45rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.sim-info-col p {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.sim-stats-meters {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.meter-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.meter-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.meter-track {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.meter-fill {
-  height: 100%;
-  border-radius: 9999px;
-  transition: width 0.3s ease;
-}
-
-.fill-water { background: #38bdf8; width: 75%; }
-.fill-sun { background: var(--accent-gold); width: 60%; }
-.fill-minerals { background: #10b981; width: 85%; }
-
-.sim-btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.sim-stage-visual {
-  background: #070c16;
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 280px;
-  position: relative;
-  overflow: hidden;
-}
-
-.sim-flower-img {
-  max-height: 160px;
-  object-fit: contain;
-  transition: transform 0.4s var(--transition-bounce);
-  filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.35));
-}
-
-.sim-height-indicator {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--accent-gold);
-  margin-top: 1rem;
-}
-
-.sim-evo-multiplier {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-}
-
 /* About & Recruiter Bio Section */
 .about-grid {
   display: grid;
@@ -1571,11 +1434,7 @@ body {
   }
 
   .project-card.featured {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card.featured .project-media-frame {
-    min-height: 320px;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .principles-grid {
@@ -1586,9 +1445,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .sim-widget-card {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1793,43 +1649,26 @@ body {
   margin-top: auto;
 }
 
-/* Card Game Mat Display */
-.cards-mat-display {
+/* Hand-written code statement under the principles grid */
+.principle-wide {
+  margin-top: 1.75rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem 1.5rem;
-  background: radial-gradient(circle at center, #132238 0%, #070b14 100%);
-  width: 100%;
-  min-height: 280px;
-  border-bottom: 1px solid var(--border-subtle);
-  overflow-x: auto;
+  gap: 1.25rem;
 }
 
-.mini-card-item {
-  width: 82px;
-  height: 120px;
-  border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
-  overflow: hidden;
-  position: relative;
-  background: #0d1525;
+.principle-wide .principle-icon-box {
+  margin-bottom: 0;
   flex-shrink: 0;
-  cursor: pointer;
 }
 
-.mini-card-item:hover {
-  transform: translateY(-8px) scale(1.06);
-  box-shadow: 0 14px 28px rgba(0, 240, 255, 0.25);
-  border-color: var(--accent-cyan);
+.principle-wide .principle-title {
+  margin-bottom: 0.3rem;
 }
 
-.mini-card-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+@media (max-width: 640px) {
+  .principle-wide {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
-
